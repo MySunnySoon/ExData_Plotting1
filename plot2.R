@@ -1,0 +1,7 @@
+# source("plot2.R")
+hpcs$Date <- as.Date(hpcs$Date, format="%d/%m/%Y")
+hpcs$DateTime<-paste(hpcs$Date, hpcs$Time, sep=" ")
+hpcs$DateTime<-as.POSIXct(strptime(hpcs$DateTime, format="%Y-%m-%d %H:%M:%S"))
+plot(x = hpcs$DateTime, y = hpcs$Global_active_power, type="l", xlab="", ylab="Global Active Power (kilowatts)")
+dev.copy(png, file = "plot2.png", width=480, height=480)
+dev.off()
